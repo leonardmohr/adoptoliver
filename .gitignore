@@ -1,0 +1,24 @@
+# ─── macOS ───────────────────────────────────────────────────────────────
+.DS_Store
+._*
+
+# ─── Camera originals and master artwork ─────────────────────────────────
+# ~130 MB. Already safe in Dropbox, and GitHub warns above 50 MB per file.
+# site/media/ holds the web-sized versions the page actually serves.
+IMG_*.jpeg
+IMG_*.MOV
+IMG_*.mov
+Line Drawings/
+SVG Line Drawings/
+
+# ─── Generated ───────────────────────────────────────────────────────────
+# The self-contained Artifact build: ~8 MB of base64 that changes in full on
+# every build, which would bloat the history fast. Rebuild it with build.py.
+# (site/index.html is generated too, but IS committed — it is the website.)
+dist/
+
+# ─── Local tooling ───────────────────────────────────────────────────────
+.claude/
+
+# ─── Stray, left behind by some other tool ───────────────────────────────
+{{pkgetc}}/

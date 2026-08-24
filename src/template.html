@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{en:meta.title}}</title>
+<meta name="description" content="{{en:meta.description}}">
+<meta property="og:title" content="{{en:meta.og.title}}">
+<meta property="og:description" content="{{en:meta.og.description}}">
+<meta property="og:image" content="media/oliver-01-hello-sm.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  /* palette sampled from Oliver's own photographs and the street he lives on */
+  --cobalt:#2F6FCE;         /* the Aguascalientes sky in his video */
+  --cobalt-deep:#16346E;
+  --cobalt-soft:#DCE6F6;
+  --marigold:#E8801F;       /* his bandana — fills only, too light for text */
+  --marigold-deep:#A5520C;  /* same hue, dark enough to read on the bone ground */
+  --marigold-lift:#F5A04A;
+  --grass:#C1A970;          /* dry grass at the roadside */
+  --ink:#14161B;            /* his coat */
+  --ink-soft:#3E434E;
+  --bone:#F1EEE7;           /* the dust road, the tile floor */
+  --surface:#FFFFFF;
+  --line:#DAD6CC;
+
+  --bg:var(--bone);
+  --fg:var(--ink);
+  --fg-dim:var(--ink-soft);
+  --card:var(--surface);
+  --rule:var(--line);
+  --accent:var(--marigold);
+  --accent-text:var(--marigold-deep);
+  --accent-ink:var(--ink);
+  --band:var(--cobalt);
+  --band-ink:#FFFFFF;
+  --band-dim:#F3F7FD;
+
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --wrap:min(100% - 2.5rem, 68rem);
+  --measure:62ch;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101319; --fg:#ECE7DD; --fg-dim:#A7AAB4;
+    --card:#181C24; --rule:#2C313C;
+    --accent:#F5A04A; --accent-text:#F5A04A; --accent-ink:#14161B;
+    --band:#16346E; --band-ink:#F2F5FB; --band-dim:#A9C2E8;
+    --cobalt-soft:#22304A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101319; --fg:#ECE7DD; --fg-dim:#A7AAB4;
+  --card:#181C24; --rule:#2C313C;
+  --accent:#F5A04A; --accent-text:#F5A04A; --accent-ink:#14161B;
+  --band:#16346E; --band-ink:#F2F5FB; --band-dim:#A9C2E8;
+  --cobalt-soft:#22304A;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--body); font-size:clamp(1.05rem,.98rem + .35vw,1.19rem);
+  line-height:1.62; font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%; display:block}
+img{height:auto}   /* let aspect-ratio win over the width/height attributes */
+figure{margin:0}   /* UA default is 1em 40px, which knocks the hero photo out of the grid */
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent-text); outline-offset:3px; border-radius:2px}
+
+.wrap{width:var(--wrap); margin-inline:auto}
+.section{padding-block:clamp(3.5rem,8vw,7rem)}
+.measure{max-width:var(--measure)}
+
+h1,h2,h3{font-family:var(--display); font-weight:800; text-wrap:balance; margin:0; line-height:1.02; letter-spacing:-.025em}
+h2{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.1rem); letter-spacing:-.03em}
+h3{font-size:1.22rem; font-weight:700; letter-spacing:-.01em; line-height:1.25}
+.display-lg{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.1rem); letter-spacing:-.03em; line-height:1.02}
+p{margin:0}
+.stack>*+*{margin-top:1.1em}
+
+.eyebrow{
+  font-family:var(--mono); font-size:.735rem; font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--fg-dim);
+  display:flex; align-items:center; gap:.7rem;
+}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--rule)}
+
+/* ── language ─────────────────────────────────────────── */
+/* Only ever hides the inactive language, so the visible one keeps its
+   natural block/inline display. English shows when JS never runs. */
+html:not([data-lang="es"]) .es{display:none}
+html[data-lang="es"] .en{display:none}
+
+.langsw{
+  position:absolute; top:1rem; right:1rem; z-index:3; display:flex; gap:2px;
+  padding:3px; border-radius:100px; background:rgba(255,255,255,.14);
+  backdrop-filter:blur(6px); font-family:var(--mono);
+}
+.langsw button{
+  border:0; cursor:pointer; background:transparent; color:#fff;
+  font:inherit; font-size:.68rem; letter-spacing:.1em; padding:.4em .85em;
+  border-radius:100px; opacity:.65; transition:opacity .15s ease, background .15s ease;
+}
+.langsw button:hover{opacity:1}
+.langsw button[aria-pressed="true"]{background:#fff; color:var(--band); opacity:1; font-weight:500}
+@media (max-width:520px){ .langsw{top:.6rem; right:.6rem} }
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero{position:relative; background:var(--band); color:var(--band-ink); overflow:hidden; isolation:isolate}
+.hero::before{ /* the hard high sun */
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(58rem 40rem at 84% -12%, rgba(255,214,150,.42), transparent 62%),
+    radial-gradient(40rem 34rem at 8% 104%, rgba(0,0,0,.30), transparent 66%);
+}
+.hero-grid{
+  display:grid; gap:clamp(2rem,4vw,3.5rem); align-items:center;
+  padding-block:clamp(3rem,7vw,5.5rem) 0;
+}
+@media (min-width:900px){ .hero-grid{grid-template-columns:1.05fr .95fr} }
+/* copy is centred, so this padding both guarantees clearance above the vitals
+   band and lifts the block visually off the bottom edge */
+.hero-copy{padding-bottom:clamp(1.5rem,3vw,2.5rem)}
+
+.hero-name{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(5rem,20vw,13.5rem); line-height:.8; letter-spacing:-.055em;
+  margin:0 0 .05em; color:#fff;
+}
+.hero-name .o{color:var(--marigold-lift)}
+.hero-kicker{
+  font-family:var(--mono); font-size:.75rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--band-dim); margin-bottom:1.15rem;
+}
+.hero-lede{
+  font-size:clamp(1.18rem,1.02rem + .6vw,1.5rem); line-height:1.45;
+  max-width:26ch; color:#fff; font-weight:300;
+}
+.hero-lede em{font-style:italic; color:var(--marigold-lift)}
+.hero-cta{margin-top:1.85rem; display:flex; flex-wrap:wrap; gap:.85rem; align-items:center}
+.hero-photo{position:relative; align-self:end; margin:0 0 -1px}
+.hero-photo img{
+  width:100%; border-radius:1.5rem 1.5rem 0 0;
+  aspect-ratio:4/5; object-fit:cover; object-position:50% 100%;
+}
+@media (max-width:899px){
+  /* stacked: centre the copy and the portrait, and keep the portrait from
+     eating the whole screen on a tablet */
+  /* text-align, not justify-items: the latter shrinks each grid item to
+     max-content, which stops the eyebrow wrapping and overflows narrow screens */
+  .hero-grid{text-align:center}
+  .hero-copy{padding-bottom:0}
+  .hero-lede{margin-inline:auto}
+  .hero-cta{justify-content:center}
+  .hero-photo{max-width:26rem; margin-inline:auto}
+  .hero-photo img{aspect-ratio:4/5; border-radius:1.25rem 1.25rem 0 0}
+}
+
+/* ── buttons ──────────────────────────────────────────── */
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--display); font-weight:700; font-size:1.02rem; letter-spacing:-.01em;
+  background:var(--accent); color:var(--accent-ink);
+  padding:.85rem 1.5rem; border-radius:100px; text-decoration:none;
+  border:2px solid transparent; transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  box-shadow:0 2px 0 rgba(0,0,0,.16);
+}
+.btn:hover{background:var(--marigold-lift); transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.22)}
+.btn svg{width:1.15em; height:1.15em; flex:none}
+.btn-lg{font-size:1.18rem; padding:1.05rem 2rem}
+
+/* ── vitals ───────────────────────────────────────────── */
+.vitals{background:var(--card); border-block:1px solid var(--rule)}
+.vitals-scroll{overflow-x:auto}
+.vitals dl{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));
+  gap:1.6rem 1.4rem; margin:0; padding-block:2.1rem;
+}
+/* below 900px the six wrap into tidy rows; above it they hold a single row,
+   sized to their content so nothing breaks onto two lines and no item is orphaned */
+@media (min-width:560px) and (max-width:899px){
+  .vitals dl{grid-template-columns:repeat(3,1fr)}   /* two even rows of three */
+}
+@media (min-width:900px){
+  .vitals dl{grid-template-columns:none; grid-auto-flow:column;
+    grid-auto-columns:minmax(max-content,1fr)}
+}
+.vitals dl > div{text-align:center}
+.vitals dt{
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--fg-dim); margin-bottom:.4rem;
+}
+.vitals dd{
+  margin:0; font-family:var(--display); font-weight:700; font-size:1.06rem;
+  letter-spacing:-.01em; line-height:1.3;
+}
+
+/* ── traits ───────────────────────────────────────────── */
+.traits{display:grid; gap:1.9rem 2.4rem; margin-top:2.6rem}
+@media (min-width:640px){ .traits{grid-template-columns:1fr 1fr} }
+@media (min-width:1000px){ .traits{grid-template-columns:repeat(3,1fr)} }
+.trait{display:grid; gap:.5rem; align-content:start}
+.trait h3{color:var(--fg)}
+.trait p{font-size:.99rem; color:var(--fg-dim); line-height:1.55}
+.trait::before{content:""; width:2.2rem; height:3px; background:var(--accent); border-radius:2px}
+
+/* honest note */
+.note{
+  margin-top:3rem; padding:1.6rem 1.7rem; border-radius:1rem;
+  background:var(--cobalt-soft); border:1px solid var(--rule);
+}
+.note h3{margin-bottom:.5rem}
+.note p{font-size:1rem; color:var(--fg-dim)}
+
+/* ── scroll chapter ───────────────────────────────────── */
+.chapter{position:relative}
+.chapter-sticky{padding-block:clamp(3.5rem,8vw,7rem)}
+.chapter-inner{display:grid; gap:1.7rem}
+.scenes{position:relative}
+.scene{display:grid; gap:1.25rem; margin:0}
+.scene .art{position:relative; width:100%; aspect-ratio:3/2}
+.scene .art svg{position:absolute; inset:0; width:100%; height:100%;
+  display:block; color:var(--fg)}
+.scene figcaption{max-width:58ch}
+.scene figcaption b{display:block; margin-bottom:.4rem; font-family:var(--mono); font-weight:500;
+  font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-text)}
+.scene figcaption span{font-size:1.03rem; line-height:1.58; color:var(--fg-dim)}
+.scene + .scene{margin-top:clamp(2.5rem,6vw,4.5rem)}
+.rail{display:none; gap:.4rem}
+.rail span{flex:1; height:3px; border-radius:2px; background:var(--rule); position:relative; overflow:hidden}
+.rail i{position:absolute; left:0; top:0; bottom:0; width:0; background:var(--accent-text)}
+
+/* JS pins the stage and scrubs the scenes; without it they simply stack down the page */
+.chapter.is-live{--n:8; --step:58vh; height:calc(100vh + (var(--n) * var(--step)))}
+.chapter.is-live .chapter-sticky{position:sticky; top:0; height:100vh;
+  display:grid; align-content:center; padding-block:0; overflow:hidden}
+.chapter.is-live .scenes{height:min(66vh,40rem)}
+.chapter.is-live .scene{position:absolute; inset:0; margin:0; opacity:0;
+  grid-template-rows:1fr auto; pointer-events:none; will-change:opacity,transform}
+.chapter.is-live .scene .art{aspect-ratio:auto; height:100%; min-height:0}
+.chapter.is-live .scene figcaption{min-height:6rem}
+.chapter.is-live .rail{display:flex}
+@media (max-width:640px){
+  .chapter.is-live{--step:52vh}
+  .chapter.is-live .scenes{height:min(70vh,34rem)}
+  /* reserve the tallest caption so the drawing is the same size on every scene */
+  .chapter.is-live .scene figcaption{min-height:9rem}
+}
+
+/* ── carousel ─────────────────────────────────────────── */
+.carousel{margin-top:2.5rem}
+.stage-wrap{position:relative}
+.track{
+  display:flex; margin:0; padding:0; list-style:none;
+  overflow-x:auto; overflow-y:hidden; border-radius:1rem;
+  scroll-snap-type:x mandatory; scroll-behavior:smooth;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  background:#0C0E12;
+}
+.track::-webkit-scrollbar{display:none}
+.track:focus-visible{outline:3px solid var(--accent-text); outline-offset:3px}
+.slide{flex:0 0 100%; scroll-snap-align:center; scroll-snap-stop:always}
+
+.stage{position:relative; width:100%; aspect-ratio:4/5; overflow:hidden;
+  display:grid; place-items:center; isolation:isolate; background:#0C0E12}
+@media (min-width:640px){ .stage{aspect-ratio:3/2} }
+@media (min-width:1024px){ .stage{aspect-ratio:16/10} }
+
+/* the slide's own image, blown up and blurred, so portraits and 16:9 can share one stage */
+.stage .bg{position:absolute; inset:-10%; z-index:-1; background-size:cover;
+  background-position:center; filter:blur(38px) saturate(1.4) brightness(.55); transform:scale(1.12)}
+/* <picture> would otherwise be the grid item, leaving the img's max-height:100%
+   with nothing to resolve against — so the photo overflows and gets cropped */
+.stage picture{display:contents}
+/* absolute + margin:auto resolves the percentage caps against a definite box.
+   (max-height:100% in flow does not, because the stage height comes from aspect-ratio.) */
+.stage .media{position:absolute; inset:0; margin:auto;
+  max-width:100%; max-height:100%; width:auto; height:auto;
+  box-shadow:0 20px 55px rgba(0,0,0,.5)}
+.stage img.media{cursor:zoom-in}
+/* videos fill the stage and letterbox internally, so the frame never changes
+   size when the source loads and replaces the poster's intrinsic dimensions.
+   Transparent background lets the blurred backdrop show through the bars. */
+.stage video.media{width:100%; height:100%; object-fit:contain;
+  background:transparent; box-shadow:none; margin:0}
+
+.zoom{position:absolute; right:.85rem; bottom:.85rem; pointer-events:none;
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#fff; background:rgba(12,14,18,.55); padding:.4em .7em; border-radius:100px;
+  opacity:0; transition:opacity .18s ease}
+.slide:hover .zoom{opacity:.9}
+
+.nav{position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+  width:2.9rem; height:2.9rem; border-radius:50%; border:0; cursor:pointer;
+  background:rgba(12,14,18,.55); color:#fff; display:grid; place-items:center;
+  font-family:var(--display); font-size:1.5rem; line-height:1; padding-bottom:.15em;
+  transition:background .15s ease, opacity .15s ease}
+.nav:hover{background:rgba(12,14,18,.85)}
+.nav[disabled]{opacity:.2; cursor:default}
+.nav-prev{left:.8rem} .nav-next{right:.8rem}
+
+.cbar{display:flex; gap:1.5rem; justify-content:space-between; align-items:baseline;
+  margin-top:1.15rem; min-height:4.6rem}
+.cap{font-size:.98rem; line-height:1.55; color:var(--fg-dim); max-width:64ch}
+.cap b{display:block; margin-bottom:.28rem; font-family:var(--mono); font-weight:500;
+  font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-text)}
+.counter{font-family:var(--mono); font-size:.76rem; letter-spacing:.12em;
+  color:var(--fg-dim); white-space:nowrap; font-variant-numeric:tabular-nums}
+
+.thumbs{display:flex; gap:.55rem; margin-top:.4rem; overflow-x:auto;
+  padding:.25rem .25rem .5rem; scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{position:relative; flex:0 0 auto; width:4.4rem; height:4.4rem; padding:0; border:0;
+  cursor:pointer; border-radius:.65rem; overflow:hidden; background:none; opacity:.45;
+  transition:opacity .18s ease, transform .18s ease}
+.thumb img{width:100%; height:100%; object-fit:cover}
+.thumb:hover{opacity:.85; transform:translateY(-2px)}
+.thumb[aria-current="true"]{opacity:1; box-shadow:0 0 0 2.5px var(--accent-text)}
+.thumb .pin{position:absolute; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.3)}
+.thumb .pin svg{width:1.25rem; height:1.25rem; fill:#fff;
+  filter:drop-shadow(0 1px 3px rgba(0,0,0,.7))}
+@media (max-width:520px){ .thumb{width:3.5rem; height:3.5rem} }
+
+@media (prefers-reduced-motion:reduce){
+  .track{scroll-behavior:auto}
+  .thumb:hover{transform:none}
+}
+
+/* ── adopt ────────────────────────────────────────────── */
+.steps{list-style:none; margin:2.4rem 0 0; padding:0; display:grid; gap:0; max-width:52rem}
+.steps li{display:grid; grid-template-columns:auto 1fr; gap:1.1rem; padding:1.15rem 0; border-top:1px solid var(--rule)}
+.steps li:last-child{border-bottom:1px solid var(--rule)}
+.steps .k{font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-dim); padding-top:.42em; min-width:6.5rem}
+.steps .v{font-size:1.02rem}
+.steps .v strong{font-family:var(--display); font-weight:700}
+
+/* ── closing ──────────────────────────────────────────── */
+.closing{background:var(--band); color:var(--band-ink); text-align:center; position:relative; overflow:hidden}
+.closing::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(46rem 30rem at 50% 118%, rgba(255,200,130,.34), transparent 66%);
+}
+.closing .wrap{position:relative}
+.closing h2{color:#fff; font-size:clamp(2.1rem,1.3rem + 3.4vw,3.7rem)}
+.closing p{margin:1.1rem auto 0; max-width:38ch; color:var(--band-dim); font-size:1.1rem}
+.closing .btn{margin-top:2.2rem}
+.tel{
+  display:block; margin-top:1.5rem; font-family:var(--mono); font-size:1rem;
+  letter-spacing:.05em; color:var(--band-dim); text-decoration:none;
+}
+.tel:hover{color:#fff}
+
+footer{padding:2.4rem 0 3rem; font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--fg-dim); text-align:center}
+
+/* ── lightbox ─────────────────────────────────────────── */
+.lb{
+  position:fixed; inset:0; z-index:50; display:none; place-items:center;
+  background:rgba(10,12,16,.94); padding:clamp(1rem,4vw,3rem);
+}
+.lb[open]{display:grid}
+.lb img{max-width:100%; max-height:86vh; border-radius:.5rem; object-fit:contain}
+.lb-close,.lb-nav{
+  position:absolute; background:rgba(255,255,255,.12); color:#fff; border:0;
+  width:2.9rem; height:2.9rem; border-radius:50%; cursor:pointer; font-size:1.3rem;
+  display:grid; place-items:center; font-family:var(--display); line-height:1;
+}
+.lb-close{top:1rem; right:1rem}
+.lb-nav{top:50%; transform:translateY(-50%)}
+.lb-prev{left:1rem} .lb-next{right:1rem}
+.lb-close:hover,.lb-nav:hover{background:rgba(255,255,255,.26)}
+.lb-count{position:absolute; bottom:1.2rem; left:50%; transform:translateX(-50%);
+  font-family:var(--mono); font-size:.75rem; letter-spacing:.14em; color:rgba(255,255,255,.7)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<script>
+/* Runs before the rest of the page is parsed, so the right language is
+   already set at first paint. ?lang= wins, then a saved choice, then the
+   browser's own preference, then English. */
+(function(){
+  var q = null;
+  try { q = new URLSearchParams(location.search).get('lang'); } catch(e){}
+  var saved = null;
+  try { saved = localStorage.getItem('oliver-lang'); } catch(e){}
+  var nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+  var lang = q || saved || (/^es/i.test(nav) ? 'es' : 'en');
+  lang = (lang === 'es') ? 'es' : 'en';
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.lang = lang;
+})();
+</script>
+
+<header class="hero">
+  <div class="langsw" role="group" aria-label="Language / Idioma">
+    <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+  </div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="hero-kicker">{{t:hero.kicker}}</p>
+      <h1 class="hero-name"><span class="o">O</span>liver</h1>
+      <p class="hero-lede">{{t:hero.lede}}</p>
+      <div class="hero-cta">
+        <a class="btn" href="{{a:wa.href}}">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          {{t:ui.whatsapp.hero}}
+        </a>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <picture>
+        <source srcset="media/oliver-01-hello.webp" type="image/webp">
+        <img src="media/oliver-01-hello.jpg" alt="{{a:photo.hero.alt}}" width="1350" height="1800">
+      </picture>
+    </figure>
+  </div>
+</header>
+
+<section class="vitals">
+  <div class="wrap vitals-scroll">
+    <dl>
+      <div><dt>{{t:vital.where.label}}</dt><dd>{{t:vital.where.value}}</dd></div>
+      <div><dt>{{t:vital.age.label}}</dt><dd>{{t:vital.age.value}}</dd></div>
+      <div><dt>{{t:vital.size.label}}</dt><dd>{{t:vital.size.value}}</dd></div>
+      <div><dt>{{t:vital.neutered.label}}</dt><dd><span>{{t:vital.neutered.value}}</span></dd></div>
+      <div><dt>{{t:vital.vaccines.label}}</dt><dd>{{t:vital.vaccines.value}}</dd></div>
+      <div><dt>{{t:vital.getsAlong.label}}</dt><dd>{{t:vital.getsAlong.value}}</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="chapter" id="chapter">
+  <div class="chapter-sticky">
+    <div class="wrap chapter-inner">
+      <h2 class="eyebrow">{{t:chapter.eyebrow}}</h2>
+      <div class="scenes">
+        <figure class="scene" data-i="0">
+          <div class="art">{{svg:1}}</div>
+          <figcaption><b>{{t:scene.1.label}}</b><span>{{t:scene.1.body}}</span></figcaption>
+        </figure>
+        <figure class="scene" data-i="1">
+          <div class="art">{{svg:2}}</div>
+          <figcaption><b>{{t:scene.2.label}}</b><span>{{t:scene.2.body}}</span></figcaption>
+        </figure>
+        <figure class="scene" data-i="2">
+          <div class="art">{{svg:3}}</div>
+          <figcaption><b>{{t:scene.3.label}}</b><span>{{t:scene.3.body}}</span></figcaption>
+        </figure>
+        <figure class="scene" data-i="3">
+          <div class="art">{{svg:4}}</div>
+          <figcaption><b>{{t:scene.4.label}}</b><span>{{t:scene.4.body}}</span></figcaption>
+        </figure>
+        <figure class="scene" data-i="4">
+          <div class="art">{{svg:5}}</div>
+          <figcaption><b>{{t:scene.5.label}}</b><span>{{t:scene.5.body}}</span></figcaption>
+        </figure>
+        <figure class="scene" data-i="5">
+          <div class="art">{{svg:6}}</div>
+          <figcaption><b>{{t:scene.6.label}}</b><span>{{t:scene.6.body}}</span></figcaption>
+        </figure>
+        <figure class="scene" data-i="6">
+          <div class="art">{{svg:7}}</div>
+          <figcaption><b>{{t:scene.7.label}}</b><span>{{t:scene.7.body}}</span></figcaption>
+        </figure>
+        <figure class="scene" data-i="7">
+          <div class="art">{{svg:8}}</div>
+          <figcaption><b>{{t:scene.8.label}}</b><span>{{t:scene.8.body}}</span></figcaption>
+        </figure>
+      </div>
+      <div class="rail" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--card); border-block:1px solid var(--rule)">
+  <div class="wrap">
+    <h2 class="eyebrow">{{t:traits.eyebrow}}</h2>
+    <div class="traits">
+      <div class="trait"><h3>{{t:trait.energetic.title}}</h3><p>{{t:trait.energetic.body}}</p></div>
+      <div class="trait"><h3>{{t:trait.affectionate.title}}</h3><p>{{t:trait.affectionate.body}} </p></div>
+      <div class="trait"><h3>{{t:trait.trainable.title}}</h3><p>{{t:trait.trainable.body}}</p></div>
+      <div class="trait"><h3>{{t:trait.kids.title}}</h3><p>{{t:trait.kids.body}}</p></div>
+      <div class="trait"><h3>{{t:trait.dogs.title}}</h3><p>{{t:trait.dogs.body}}</p></div>
+      <div class="trait"><h3>{{t:trait.calm.title}}</h3><p>{{t:trait.calm.body}}</p></div>
+    </div>
+
+    <div class="note measure">
+      <h3>{{t:note.title}}</h3>
+      <p>{{t:note.body}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="eyebrow">{{t:gallery.eyebrow}}</h2>
+
+    <div class="carousel" role="region" aria-roledescription="carousel" aria-label="{{a:ui.carousel.region}}">
+      <div class="stage-wrap">
+        <ul class="track" id="track" tabindex="0">
+          <li class="slide" role="group" aria-roledescription="slide" aria-label="{{a:slide.1.aria}}"
+              data-label="{{a:slide.1.label}}" data-cap="{{a:slide.1.cap}}">
+            <div class="stage">
+              <div class="bg" style="background-image:url(media/thumb-01.jpg)"></div>
+              <picture><source srcset="media/oliver-01-hello.webp" type="image/webp"><img class="media" src="media/oliver-01-hello.jpg" alt="{{a:slide.1.alt}}"></picture><span class="zoom">{{t:ui.zoom}}</span>
+            </div>
+          </li>
+          <li class="slide" role="group" aria-roledescription="slide" aria-label="{{a:slide.2.aria}}"
+              data-label="{{a:slide.2.label}}" data-cap="{{a:slide.2.cap}}">
+            <div class="stage">
+              <div class="bg" style="background-image:url(media/thumb-02.jpg)"></div>
+              <video class="media" controls preload="none" playsinline poster="media/training-poster.jpg" aria-label="{{a:slide.2.videoAria}}"></video>
+            </div>
+          </li>
+          <li class="slide" role="group" aria-roledescription="slide" aria-label="{{a:slide.3.aria}}"
+              data-label="{{a:slide.3.label}}" data-cap="{{a:slide.3.cap}}">
+            <div class="stage">
+              <div class="bg" style="background-image:url(media/thumb-03.jpg)"></div>
+              <picture><source srcset="media/oliver-02-smile.webp" type="image/webp"><img class="media" src="media/oliver-02-smile.jpg" alt="{{a:slide.3.alt}}" loading="lazy"></picture><span class="zoom">{{t:ui.zoom}}</span>
+            </div>
+          </li>
+          <li class="slide" role="group" aria-roledescription="slide" aria-label="{{a:slide.4.aria}}"
+              data-label="{{a:slide.4.label}}" data-cap="{{a:slide.4.cap}}">
+            <div class="stage">
+              <div class="bg" style="background-image:url(media/thumb-04.jpg)"></div>
+              <video class="media" controls preload="none" playsinline poster="media/hello-poster.jpg" aria-label="{{a:slide.4.videoAria}}"></video>
+            </div>
+          </li>
+          <li class="slide" role="group" aria-roledescription="slide" aria-label="{{a:slide.5.aria}}"
+              data-label="{{a:slide.5.label}}" data-cap="{{a:slide.5.cap}}">
+            <div class="stage">
+              <div class="bg" style="background-image:url(media/thumb-05.jpg)"></div>
+              <picture><source srcset="media/oliver-03-resting.webp" type="image/webp"><img class="media" src="media/oliver-03-resting.jpg" alt="{{a:slide.5.alt}}" loading="lazy"></picture><span class="zoom">{{t:ui.zoom}}</span>
+            </div>
+          </li>
+          <li class="slide" role="group" aria-roledescription="slide" aria-label="{{a:slide.6.aria}}"
+              data-label="{{a:slide.6.label}}" data-cap="{{a:slide.6.cap}}">
+            <div class="stage">
+              <div class="bg" style="background-image:url(media/thumb-06.jpg)"></div>
+              <video class="media" controls preload="none" playsinline poster="media/paw-poster.jpg" aria-label="{{a:slide.6.videoAria}}"></video>
+            </div>
+          </li>
+          <li class="slide" role="group" aria-roledescription="slide" aria-label="{{a:slide.7.aria}}"
+              data-label="{{a:slide.7.label}}" data-cap="{{a:slide.7.cap}}">
+            <div class="stage">
+              <div class="bg" style="background-image:url(media/thumb-07.jpg)"></div>
+              <picture><source srcset="media/oliver-04-friend.webp" type="image/webp"><img class="media" src="media/oliver-04-friend.jpg" alt="{{a:slide.7.alt}}" loading="lazy"></picture><span class="zoom">{{t:ui.zoom}}</span>
+            </div>
+          </li>
+        </ul>
+        <button class="nav nav-prev" id="prev" type="button" aria-label="{{a:ui.prev}}">&#8249;</button>
+        <button class="nav nav-next" id="next" type="button" aria-label="{{a:ui.next}}">&#8250;</button>
+      </div>
+
+      <div class="cbar">
+        <p class="cap" id="cap" aria-live="polite"></p>
+        <p class="counter" id="counter">1 / 7</p>
+      </div>
+
+      <div class="thumbs" id="thumbs">
+        <button class="thumb" type="button" data-go="0" aria-label="{{a:thumb.1.aria}}" aria-current="true"><img src="media/thumb-01.jpg" alt="" width="200" height="200"></button>
+        <button class="thumb" type="button" data-go="1" aria-label="{{a:thumb.2.aria}}"><img src="media/thumb-02.jpg" alt="" width="200" height="200"><span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span></button>
+        <button class="thumb" type="button" data-go="2" aria-label="{{a:thumb.3.aria}}"><img src="media/thumb-03.jpg" alt="" width="200" height="200"></button>
+        <button class="thumb" type="button" data-go="3" aria-label="{{a:thumb.4.aria}}"><img src="media/thumb-04.jpg" alt="" width="200" height="200"><span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span></button>
+        <button class="thumb" type="button" data-go="4" aria-label="{{a:thumb.5.aria}}"><img src="media/thumb-05.jpg" alt="" width="200" height="200"></button>
+        <button class="thumb" type="button" data-go="5" aria-label="{{a:thumb.6.aria}}"><img src="media/thumb-06.jpg" alt="" width="200" height="200"><span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span></button>
+        <button class="thumb" type="button" data-go="6" aria-label="{{a:thumb.7.aria}}"><img src="media/thumb-07.jpg" alt="" width="200" height="200"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--card); border-block:1px solid var(--rule)">
+  <div class="wrap">
+    <h2 class="eyebrow">{{t:adopt.eyebrow}}</h2>
+    <h3 class="measure display-lg" style="margin-top:1.4rem">{{t:adopt.heading}}</h3>
+    <ol class="steps">
+      <li><span class="k">{{t:step.where.key}}</span><span class="v">{{t:step.where.value}}</span></li>
+      <li><span class="k">{{t:step.health.key}}</span><span class="v">{{t:step.health.value}}</span></li>
+      <li><span class="k">{{t:step.cost.key}}</span><span class="v">{{t:step.cost.value}}</span></li>
+      <li><span class="k">{{t:step.ask.key}}</span><span class="v">{{t:step.ask.value}}</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section closing">
+  <div class="wrap">
+    <h2>{{t:closing.heading}}</h2>
+    <p>{{t:closing.body}}</p>
+    <a class="btn btn-lg" href="{{a:wa.href}}">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+      {{t:ui.whatsapp.closing}}
+    </a>
+  </div>
+</section>
+
+<footer>{{t:footer.text}}</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="{{a:ui.lightbox}}">
+  <button class="lb-close" aria-label="{{a:ui.close}}">&times;</button>
+  <button class="lb-nav lb-prev" aria-label="{{a:ui.lb.prev}}">&#8249;</button>
+  <img id="lb-img" alt="">
+  <button class="lb-nav lb-next" aria-label="{{a:ui.lb.next}}">&#8250;</button>
+  <span class="lb-count" id="lb-count"></span>
+</div>
+
+<script>
+(function(){
+  var track = document.getElementById('track');
+  if(!track) return;
+  var slides  = [].slice.call(track.children);
+  var thumbs  = [].slice.call(document.querySelectorAll('.thumb'));
+  var cap     = document.getElementById('cap');
+  var counter = document.getElementById('counter');
+  var prev    = document.getElementById('prev');
+  var next    = document.getElementById('next');
+  var reduce  = matchMedia('(prefers-reduced-motion: reduce)');
+  var vsrc    = {training:'media/training.mp4', hello:'media/hello.mp4', paw:'media/paw.mp4'};
+  var active  = -1;
+
+  function behavior(){ return reduce.matches ? 'auto' : 'smooth'; }
+
+  function render(i, force){
+    if(i === active && !force) return;
+    active = i;
+    var s = slides[i];
+    var es = document.documentElement.getAttribute('data-lang') === 'es';
+    cap.innerHTML = '<b></b>';
+    cap.firstChild.textContent = (es && s.dataset.esLabel) || s.dataset.label;
+    cap.appendChild(document.createTextNode((es && s.dataset.esCap) || s.dataset.cap));
+    counter.textContent = (i+1) + ' / ' + slides.length;
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+    thumbs.forEach(function(t,j){
+      if(j === i) t.setAttribute('aria-current','true'); else t.removeAttribute('aria-current');
+    });
+    // never leave a video playing on a slide you've scrolled past
+    slides.forEach(function(o,j){
+      var v = o.querySelector('video');
+      if(v && j !== i && !v.paused) v.pause();
+    });
+  }
+
+  function go(i){
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({left: i * track.clientWidth, behavior: behavior()});
+    render(i);
+  }
+
+  prev.addEventListener('click', function(){ go(active - 1); });
+  next.addEventListener('click', function(){ go(active + 1); });
+  thumbs.forEach(function(t){
+    t.addEventListener('click', function(){ go(parseInt(t.dataset.go, 10)); });
+  });
+
+  track.addEventListener('keydown', function(e){
+    var k = e.key, i = null;
+    if(k === 'ArrowLeft') i = active - 1;
+    else if(k === 'ArrowRight') i = active + 1;
+    else if(k === 'Home') i = 0;
+    else if(k === 'End') i = slides.length - 1;
+    if(i !== null){ e.preventDefault(); go(i); }
+  });
+
+  // the scroll container is the source of truth: swipe, trackpad, keys and
+  // buttons all end up changing scrollLeft, so derive the active slide from it
+  var settle;
+  track.addEventListener('scroll', function(){
+    clearTimeout(settle);
+    settle = setTimeout(function(){
+      if(track.clientWidth) render(Math.round(track.scrollLeft / track.clientWidth));
+    }, 60);
+  }, {passive:true});
+
+  // videos: file attached on first interaction, and only one plays at a time
+  slides.forEach(function(s){
+    var v = s.querySelector('video');
+    if(!v) return;
+    var key = (v.getAttribute('poster').match(/media\/(\w+)-poster/) || [])[1];
+    var attach = function(){ if(!v.getAttribute('src') && vsrc[key]) v.src = vsrc[key]; };
+    ['play','pointerdown','focus'].forEach(function(ev){
+      v.addEventListener(ev, attach, {once:true});
+    });
+    v.addEventListener('play', function(){
+      slides.forEach(function(o){
+        var w = o.querySelector('video');
+        if(w && w !== v && !w.paused) w.pause();
+      });
+    });
+  });
+
+  // keep the active slide correct when the stage is resized
+  var rt;
+  addEventListener('resize', function(){
+    clearTimeout(rt);
+    var i = active;
+    rt = setTimeout(function(){ track.scrollTo({left: i * track.clientWidth, behavior:'auto'}); }, 120);
+  });
+
+  render(0);
+
+  // let the language switcher redraw the caption in place
+  addEventListener('oliver:lang', function(){ render(active, true); });
+})();
+
+(function(){
+  /* lightbox */
+  var shots = [].slice.call(document.querySelectorAll('.slide img.media'));
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img'),
+      count = document.getElementById('lb-count'), idx = 0, opener = null;
+
+  function show(i){
+    idx = (i + shots.length) % shots.length;
+    img.src = shots[idx].currentSrc || shots[idx].src;
+    img.alt = shots[idx].alt || '';
+    count.textContent = (idx+1) + ' / ' + shots.length;
+  }
+  function open(i, from){
+    opener = from; show(i); lb.setAttribute('open','');
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.lb-close').focus();
+  }
+  function close(){
+    lb.removeAttribute('open'); document.body.style.overflow = '';
+    if(opener) opener.focus();
+  }
+  shots.forEach(function(s,i){ s.addEventListener('click', function(){ open(i, s); }); });
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  lb.querySelector('.lb-prev').addEventListener('click', function(){ show(idx-1); });
+  lb.querySelector('.lb-next').addEventListener('click', function(){ show(idx+1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.hasAttribute('open')) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowLeft') show(idx-1);
+    else if(e.key === 'ArrowRight') show(idx+1);
+    else if(e.key === 'Tab'){            /* keep focus inside the dialog */
+      var f = lb.querySelectorAll('button');
+      var first = f[0], last = f[f.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+})();
+
+(function(){
+  var ch = document.getElementById('chapter');
+  if(!ch) return;
+  var scenes = [].slice.call(ch.querySelectorAll('.scene'));
+  var bars   = [].slice.call(ch.querySelectorAll('.rail i'));
+  var N = scenes.length;
+  // reduced motion keeps the plain stacked version, which is the no-JS view too
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  ch.classList.add('is-live');
+
+  var FADE = 0.72;            // scene holds still, then cross-fades over the last stretch
+  function update(){
+    var span = ch.offsetHeight - innerHeight;
+    if(span <= 0) return;
+    var p = -ch.getBoundingClientRect().top / span;
+    p = p < 0 ? 0 : (p > 1 ? 1 : p);
+    var x = p * N;
+    var i = Math.floor(x); if(i > N-1) i = N-1;
+    var f = x - i;
+    // the last scene has nothing to hand over to, so it holds instead of fading out
+    var t = (i < N - 1 && f > FADE) ? (f - FADE) / (1 - FADE) : 0;
+    for(var k = 0; k < N; k++){
+      var o = k === i ? 1 - t : (k === i + 1 ? t : 0);
+      var s = scenes[k];
+      s.style.opacity = o;
+      s.style.visibility = o > 0.002 ? 'visible' : 'hidden';
+      s.style.transform = k === i ? 'translateY(' + (-9 * t).toFixed(2) + 'px)'
+                        : k === i + 1 ? 'translateY(' + (11 * (1 - t)).toFixed(2) + 'px)'
+                        : '';
+      if(bars[k]) bars[k].style.width = (k < i ? 100 : k === i ? f * 100 : 0) + '%';
+    }
+  }
+  addEventListener('scroll', update, {passive:true});
+  addEventListener('resize', update);
+  update();
+})();
+
+/* ── language switching ───────────────────────────────────────────────
+   Visible prose is duplicated in the markup and toggled by CSS, so it
+   survives with JS off. Only attribute copy (alt, aria-label, the
+   carousel captions and the WhatsApp opener) has to be swapped here. */
+(function(){
+  var PAIRS = [['alt','esAlt'], ['aria-label','esAria'],
+               ['data-label','esLabel'], ['data-cap','esCap'], ['href','esHref']];
+  var TITLE = {{json:meta.title}};
+  var nodes = document.querySelectorAll('[data-es-alt],[data-es-aria],[data-es-label],[data-es-cap],[data-es-href]');
+  var original = [];
+  nodes.forEach(function(el, i){
+    original[i] = {};
+    PAIRS.forEach(function(pr){
+      if(el.dataset[pr[1]] != null) original[i][pr[0]] = el.getAttribute(pr[0]);
+    });
+  });
+
+  function apply(lang){
+    var es = lang === 'es';
+    document.documentElement.setAttribute('data-lang', es ? 'es' : 'en');
+    document.documentElement.lang = es ? 'es' : 'en';
+    document.title = TITLE[es ? 'es' : 'en'];
+    nodes.forEach(function(el, i){
+      PAIRS.forEach(function(pr){
+        var v = el.dataset[pr[1]];
+        if(v == null) return;
+        el.setAttribute(pr[0], es ? v : original[i][pr[0]]);
+      });
+    });
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.setLang === (es ? 'es' : 'en')));
+    });
+    dispatchEvent(new Event('oliver:lang'));
+  }
+
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.dataset.setLang;
+      try { localStorage.setItem('oliver-lang', lang); } catch(e){}
+      apply(lang);
+    });
+  });
+
+  // the inline head script already picked the language; sync everything else to it
+  apply(document.documentElement.getAttribute('data-lang') === 'es' ? 'es' : 'en');
+})();
+</script>
+</body>
+</html>

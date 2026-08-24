@@ -18,7 +18,7 @@ Edit it, then run:
 python3 build.py
 ```
 
-That regenerates `site/index.html` and `dist/oliver-artifact.html`.
+That regenerates `docs/index.html` and `dist/oliver-artifact.html`.
 
 The build refuses to finish if a key is missing a language, so the two can't
 quietly drift apart the way they used to.
@@ -33,14 +33,14 @@ Values may contain simple inline HTML — `<em>`, `<strong>` — and several do.
 | `src/template.html` | Structure, styling and behaviour. Carries no prose |
 | `src/scenes/01..08.svg` | The eight line drawings in the scroll sequence |
 | `assets/inline/` | Compressed media the Artifact embeds |
-| `site/` | The deployable folder — drag it to any static host |
+| `docs/` | The built website. GitHub Pages serves this folder |
 | `dist/oliver-artifact.html` | One self-contained file, for publishing as an Artifact |
 | `build.py` | Builds both outputs |
 
-`site/index.html` and `dist/` are **generated**. Edits there are overwritten on
+`docs/index.html` and `dist/` are **generated**. Edits there are overwritten on
 the next build — change `src/` instead.
 
-`site/media/` holds the web-sized photos and video and is not regenerated.
+`docs/media/` holds the web-sized photos and video and is not regenerated.
 The camera originals (`IMG_*`) and `SVG Line Drawings/` are never touched.
 
 ## Placeholders in the template
@@ -58,8 +58,13 @@ than a redundant pair.
 
 ## Deploying
 
-Drag the `site` folder onto Netlify Drop, Cloudflare Pages or GitHub Pages.
-There is no server component and nothing to configure.
+The repo is set up for **GitHub Pages**: in the repository's
+Settings → Pages, choose branch `main` and folder `/docs`.
+
+The empty `docs/.nojekyll` file tells Pages to serve the folder as-is rather
+than running it through Jekyll.
+
+There is no server component and nothing else to configure.
 
 ## Notes
 

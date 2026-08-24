@@ -1,0 +1,454 @@
+{
+  "ui.whatsapp.hero": {
+    "en": "Message us on WhatsApp",
+    "es": "Contáctanos por WhatsApp"
+  },
+  "vital.where.label": {
+    "en": "Location",
+    "es": "Ubicación"
+  },
+  "vital.age.label": {
+    "en": "Age",
+    "es": "Edad"
+  },
+  "vital.age.value": {
+    "en": "5 months",
+    "es": "5 meses"
+  },
+  "vital.size.label": {
+    "en": "Size",
+    "es": "Tamaño"
+  },
+  "vital.size.value": {
+    "en": "Large, 56 lbs",
+    "es": "Grande, 25 kg"
+  },
+  "vital.neutered.label": {
+    "en": "Neutered",
+    "es": "Castrado"
+  },
+  "vital.vaccines.label": {
+    "en": "Vaccines",
+    "es": "Vacunas"
+  },
+  "vital.vaccines.value": {
+    "en": "Up to date",
+    "es": "Al día"
+  },
+  "vital.vaccines.note": {
+    "en": "rabies this week",
+    "es": "antirrábica esta semana"
+  },
+  "vital.getsAlong.label": {
+    "en": "Personality",
+    "es": "Personalidad"
+  },
+  "vital.getsAlong.value": {
+    "en": "Friendly",
+    "es": "Amigable"
+  },
+  "chapter.eyebrow": {
+    "en": "MY STORY",
+    "es": "MI HISTORIA..."
+  },
+  "scene.1.label": {
+    "en": "Abandoned",
+    "es": "ABANDONO"
+  },
+  "scene.1.body": {
+      "en": "Three months old, alone, abandoned, and nobody to care for him.",
+      "es": "Con apenas tres meses de edad, solo, sin que nadie lo cuidara."
+  },
+  "scene.2.label": {
+    "en": "A sound down the road",
+    "es": "Un ruido llamativo en la calle."
+  },
+  "scene.2.body": {
+    "en": "Children — playing at the park at the end of the road.",
+    "es": "Unos niños — jugando en el parque."
+  },
+  "scene.3.label": {
+    "en": "Ears up",
+    "es": "Orejas paradas"
+  },
+  "scene.3.body": {
+    "en": "Something about it was worth a closer look.",
+    "es": "Algo le dijo que valía la pena acercarse."
+  },
+  "scene.4.label": {
+    "en": "New friends",
+    "es": "Nuevos amigos"
+  },
+  "scene.4.body": {
+      "en": "The children couldn't resist playing with such a cute dog, and at bedtime Oliver followed them home.",
+    "es": "Tan bonito era Oliver que los niños jugaron con él. A la hora de dormir, Oliver los siguió hasta su casa."
+  },
+  "scene.5.label": {
+    "en": "Days End",
+    "es": "Al Final de Día"
+  },
+  "scene.5.body": {
+    "en": "It was bedtime, and his afternoon of fun — his one break from life on the street — had come to an end.",
+      "es": "Ya que era hora de dormir, su momento de diversión y distracción de su vida callejera había llegado a su fin."
+  },
+  "scene.6.label": {
+    "en": "The first nights",
+    "es": "Las primeras noches"
+  },
+  "scene.6.body": {
+    "en": "With no family and no home of his own, Oliver cried every night.",
+    "es": "Como Oliver seguía sin familia y sin un hogar propio, lloraba todas las noches."
+  },
+  "scene.7.label": {
+    "en": "A caring hand",
+    "es": "Empatía"
+  },
+  "scene.7.body": {
+      "en": "Unable to leave a puppy in such a state, we started bringing him food and water, and looking after him until he could find a family and a home of his own.",
+      "es": "Oliver recibe atención mientras encontramos un lugar para el."
+  },
+  "scene.8.label": {
+    "en": "Still waiting",
+    "es": "Todavía esperando"
+  },
+  "scene.8.body": {
+    "en": "We've done what we can for him, but the truth is Oliver deserves more than we can give. We already have two dogs of our own, and a third isn't possible long-term. So he's still waiting for a home he can call his own.",
+      "es": "Hemos hecho lo posible para cuidarlo, sin embargo, Oliver merece más de lo que podemos ofrecer. Tenemos nuestros dos perros y no es posible tener un tercero a largo plazo. Así que Oliver sigue esperando encontrar un hogar que pueda llamar suyo para siempre."
+  },
+  "traits.eyebrow": {
+    "en": "Personality",
+    "es": "Personalidad"
+  },
+  "trait.energetic.title": {
+    "en": "Energetic",
+    "es": "Energético"
+  },
+  "trait.energetic.body": {
+    "en": "Oliver loves to run, and he makes a perfect running partner.",
+    "es": "A Oliver le encanta correr. Es el compañero perfecto para salir a trotar."
+  },
+  "trait.affectionate.title": {
+    "en": "Genuinely affectionate",
+    "es": "Cariñoso de verdad"
+  },
+  "trait.affectionate.body": {
+    "en": "Oliver loves people, and wants nothing more than to be wherever you are.",
+    "es": "Oliver ama a la gente, y no quiere nada más que estar donde tú estés."
+  },
+  "trait.trainable.title": {
+    "en": "Very trainable",
+    "es": "Muy fácil de entrenar"
+  },
+  "trait.trainable.body": {
+    "en": "Oliver picked up sit, stay and come very quickly, and he's ready to keep learning with his forever family.",
+      "es": "Oliver conoce los comandos: \"sentado\", \"quieto\" y \"ven\". Él está listo para seguir aprendiendo."
+  },
+  "trait.kids.title": {
+    "en": "Brilliant with kids",
+    "es": "Buenísimo con los niños"
+  },
+  "trait.kids.body": {
+      "en": "Oliver loves playing with kids, and his ears perk up whenever he hears them.",
+      "es": "A Oliver le encanta jugar con los niños. Puede pasar horas jugando con ellos."
+  },
+  "trait.dogs.title": {
+    "en": "Friendly with everyone",
+    "es": "Amigable con todos"
+  },
+  "trait.dogs.body": {
+    "en": "He shares a home with other dogs and gets on with all of them.  Though he can still be a little rambunctious.",
+      "es": "Vive con otros perros y se lleva bien con todos."
+  },
+  "trait.calm.title": {
+    "en": "Calm indoors",
+    "es": "Tranquilo en casa"
+  },
+  "trait.calm.body": {
+    "en": "After a morning walk and a little training, Oliver settles right down indoors — he eats, and then he sleeps.",
+    "es": "Después de un paseo por la mañana y un poco de entrenamiento, Oliver se calma en casa: come, y luego duerme."
+  },
+  "note.title": {
+    "en": "One honest thing",
+    "es": "Algo que debes saber"
+  },
+  "note.body": {
+    "en": "He doesn't quite know how big he is yet, so he still needs teaching to be gentle around children and smaller dogs.",
+    "es": "Todavía no se da cuenta de lo grande que es, así que hay que seguir enseñándole a ser delicado con los niños y con perros más pequeños."
+  },
+  "gallery.eyebrow": {
+    "en": "Him, lately",
+    "es": "Él, últimamente"
+  },
+  "adopt.eyebrow": {
+    "en": "Adopting him",
+    "es": "Adopción"
+  },
+  "adopt.heading": {
+    "en": "Where to meet him",
+    "es": "Dónde encontrarlo"
+  },
+  "step.where.key": {
+    "en": "Where",
+    "es": "Dónde"
+  },
+  "step.where.value": {
+      "en": "If you would like to adopt him, we can fly with him to California, or of course you can visit him here in Aguascalientes.",
+    "es": "<strong>Aguascalientes</strong> — ven a conocerlo y ver si es el perro perfecto para tú familia."
+  },
+  "step.health.key": {
+    "en": "Health",
+    "es": "Salud"
+  },
+  "step.health.value": {
+    "en": "All his vaccinations are up to date. He has not been neutered yet.",
+    "es": "Todas sus vacunas están al día. Todavía no está castrado."
+  },
+  "step.cost.key": {
+    "en": "Cost",
+    "es": "Costo"
+  },
+  "step.cost.value": {
+    "en": "There's no fee for Oliver.",
+    "es": "No hay ninguna cuota por Oliver."
+  },
+  "step.ask.key": {
+    "en": "What we ask",
+    "es": "Lo que pedimos"
+  },
+  "step.ask.value": {
+    "en": "Only that he goes somewhere he can run and play, somewhere he won't be alone all day, and somewhere willing to keep up the training he's already started.",
+    "es": "Qué llegue a un lugar donde pueda correr y jugar, donde no se quede solo todo el día, y donde estén dispuestos a seguir con el entrenamiento que ya empezó."
+  },
+  "closing.heading": {
+    "en": "He's ready when you are.",
+    "es": "Él ya está listo."
+  },
+  "closing.body": {
+    "en": "Send a message and we'll tell you anything you want to know about him — honestly, including the parts that aren't perfect.",
+    "es": "Escríbenos y te contamos lo que quieras saber de él — con honestidad, incluso lo que no es perfecto."
+  },
+  "ui.whatsapp.closing": {
+    "en": "Message us about Oliver",
+    "es": "Pregunta por Oliver"
+  },
+  "wa.href": {
+    "en": "https://wa.me/16504279274?text=Hi%21%20I%20saw%20Oliver%27s%20page%20and%20I%27d%20love%20to%20know%20more%20about%20him.",
+    "es": "https://wa.me/16504279274?text=%C2%A1Hola%21%20Vi%20la%20p%C3%A1gina%20de%20Oliver%20y%20me%20encantar%C3%ADa%20saber%20m%C3%A1s%20de%20%C3%A9l."
+  },
+  "photo.hero.alt": {
+    "en": "Oliver, a young black dog with a white speckled chest, sitting and looking at the camera with his tongue out, wearing an orange bandana.",
+    "es": "Oliver, un perro joven de pelaje negro con el pecho moteado de blanco, sentado y mirando a la cámara con la lengua de fuera y una bandana naranja."
+  },
+  "ui.carousel.region": {
+    "en": "Photos and video of Oliver",
+    "es": "Fotos y video de Oliver"
+  },
+  "slide.1.aria": {
+    "en": "1 of 7",
+    "es": "1 de 7"
+  },
+  "slide.1.label": {
+    "en": "Hello",
+    "es": "Hola"
+  },
+  "slide.1.cap": {
+    "en": "Such a beautiful big boy.",
+    "es": "Que hermoso y grande está."
+  },
+  "slide.1.alt": {
+    "en": "Oliver sitting and facing the camera, tongue out, wearing an orange bandana.",
+    "es": "Oliver sentado de frente a la cámara, con la lengua de fuera y una bandana naranja."
+  },
+  "slide.2.aria": {
+    "en": "2 of 7",
+    "es": "2 de 7"
+  },
+  "slide.2.label": {
+    "en": "Sit, stay, come",
+    "es": "Sentado, quieto, ven"
+  },
+  "slide.2.cap": {
+      "en": "Practicing sit, stay, and come.",
+      "es": "Entrenando siéntate, espera, y ven."
+  },
+  "slide.2.videoAria": {
+    "en": "Video: Oliver holding a sit-stay outdoors with his lead trailing loose on the ground, then coming when called and walking at heel.",
+    "es": "Video: Oliver se queda sentado afuera con la correa arrastrando por el suelo, luego viene cuando lo llaman y camina pegado a la persona."
+  },
+  "slide.3.aria": {
+    "en": "3 of 7",
+    "es": "3 de 7"
+  },
+  "slide.3.label": {
+    "en": "The grin",
+    "es": "La sonrisa"
+  },
+  "slide.3.cap": {
+    "en": "Mid-grin, which is where his face spends most of its time.",
+    "es": "A media sonrisa, que es como pasa casi todo el día."
+  },
+  "slide.3.alt": {
+    "en": "Oliver sitting side-on, grinning up and away from the camera, in a bright orange bandana.",
+    "es": "Oliver sentado de lado, sonriendo hacia arriba, con una bandana naranja brillante."
+  },
+  "slide.4.aria": {
+    "en": "4 of 7",
+    "es": "4 de 7"
+  },
+  "slide.4.label": {
+    "en": "Close up",
+    "es": "De cerca"
+  },
+  "slide.4.cap": {
+    "en": "Wouldn't you love to see this beautiful face greet you?",
+    "es": "¿No te encantaría que esta hermosa carita te recibiera todos los días?"
+  },
+  "slide.4.videoAria": {
+    "en": "Video: Oliver leaning his head into an outstretched hand for a scratch.",
+    "es": "Video: Oliver recarga la cabeza en una mano extendida para que lo acaricien."
+  },
+  "slide.5.aria": {
+    "en": "5 of 7",
+    "es": "5 de 7"
+  },
+  "slide.5.label": {
+    "en": "Off duty",
+    "es": "Descansando"
+  },
+  "slide.5.cap": {
+    "en": "Oliver after going out for a walk.",
+    "es": "Oliver despues de caminar."
+  },
+  "slide.5.alt": {
+    "en": "Oliver lying down with his front paws stretched out in front of him, relaxed.",
+    "es": "Oliver acostado con las patas delanteras estiradas al frente, relajado."
+  },
+  "slide.6.aria": {
+    "en": "6 of 7",
+    "es": "6 de 7"
+  },
+  "slide.6.label": {
+    "en": "Shake",
+    "es": "Dar la pata"
+  },
+  "slide.6.cap": {
+    "en": "Self-control training.  He's a quick learner",
+    "es": "Entrenamiento de autocontrol. ¡Aprende bien rapido!"
+  },
+  "slide.6.videoAria": {
+    "en": "Video: Oliver placing his paw into a waiting hand.",
+    "es": "Video: Oliver pone la pata en una mano que lo espera."
+  },
+  "slide.7.aria": {
+    "en": "7 of 7",
+    "es": "7 de 7"
+  },
+  "slide.7.label": {
+    "en": "Housemates",
+    "es": "Compañeros de casa"
+  },
+  "slide.7.cap": {
+    "en": "Oliver with other dogs.",
+    "es": "Oliver con otros perros."
+  },
+  "slide.7.alt": {
+    "en": "Oliver lying on the floor in profile, with another dog standing just behind him.",
+    "es": "Oliver acostado de perfil en el piso, con otro perro parado justo detrás."
+  },
+  "ui.prev": {
+    "en": "Previous",
+    "es": "Anterior"
+  },
+  "ui.next": {
+    "en": "Next",
+    "es": "Siguiente"
+  },
+  "thumb.1.aria": {
+    "en": "Show Hello, 1 of 7",
+    "es": "Mostrar Hola, 1 de 7"
+  },
+  "thumb.2.aria": {
+    "en": "Show Sit, stay, come, 2 of 7",
+    "es": "Mostrar Sentado, quieto, ven, 2 de 7"
+  },
+  "thumb.3.aria": {
+    "en": "Show The grin, 3 of 7",
+    "es": "Mostrar La sonrisa, 3 de 7"
+  },
+  "thumb.4.aria": {
+    "en": "Show Close up, 4 of 7",
+    "es": "Mostrar De cerca, 4 de 7"
+  },
+  "thumb.5.aria": {
+    "en": "Show Off duty, 5 of 7",
+    "es": "Mostrar Descansando, 5 de 7"
+  },
+  "thumb.6.aria": {
+    "en": "Show Shake, 6 of 7",
+    "es": "Mostrar Dar la pata, 6 de 7"
+  },
+  "thumb.7.aria": {
+    "en": "Show Housemates, 7 of 7",
+    "es": "Mostrar Compañeros de casa, 7 de 7"
+  },
+  "ui.lightbox": {
+    "en": "Photo viewer",
+    "es": "Visor de fotos"
+  },
+  "ui.close": {
+    "en": "Close",
+    "es": "Cerrar"
+  },
+  "ui.lb.prev": {
+    "en": "Previous photo",
+    "es": "Foto anterior"
+  },
+  "ui.lb.next": {
+    "en": "Next photo",
+    "es": "Foto siguiente"
+  },
+  "hero.kicker": {
+    "en": "Aguascalientes, México &nbsp;·&nbsp; looking for a home",
+    "es": "Aguascalientes, México &nbsp;·&nbsp; busca un hogar"
+  },
+  "hero.lede": {
+    "en": "A beautiful and energetic puppy, searching for his <em>forever home.</em>",
+    "es": "Es un cachorro precioso y lleno de energía, que busca un <em>hogar para siempre.</em>"
+  },
+  "ui.zoom": {
+    "en": "Click to enlarge",
+    "es": "Clic para ampliar"
+  },
+  "vital.where.value": {
+    "en": "Aguascalientes, MX",
+    "es": "Aguascalientes, MX"
+  },
+  "footer.text": {
+    "en": "Oliver &nbsp;·&nbsp; Aguascalientes, México",
+    "es": "Oliver &nbsp;·&nbsp; Aguascalientes, México"
+  },
+  "vital.neutered.value": {
+    "en": "No",
+    "es": "No"
+  },
+  "meta.title": {
+    "en": "Oliver",
+    "es": "Oliver — en adopción"
+  },
+  "meta.description": {
+    "en": "Oliver is a young, energetic, very trainable street dog from Aguascalientes, Mexico, looking for a home. Photos, video, and how to meet him.",
+    "es": "Oliver is a young, energetic, very trainable street dog from Aguascalientes, Mexico, looking for a home. Photos, video, and how to meet him."
+  },
+  "meta.og.title": {
+    "en": "Oliver — looking for a home",
+    "es": "Oliver — looking for a home"
+  },
+  "meta.og.description": {
+    "en": "He followed some kids home from the park one afternoon and never left. Now he's looking for a family of his own.",
+    "es": "He followed some kids home from the park one afternoon and never left. Now he's looking for a family of his own."
+  },
+  "meta.artifactTitle": {
+    "en": "Adopt Oliver",
+    "es": "Adopt Oliver"
+  }
+}
